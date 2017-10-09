@@ -1,0 +1,39 @@
+<body>
+  <div class="container">
+    <header>
+      <div class="log"> 
+      {{> loginButtons}}
+    </div>
+      <h1 class="header">List of books</h1>
+        {{#if currentUser}}
+          <form class="new-post">
+            <input type="text" name="text" placeholder="The title of the book" class="input" required />
+            <input type="text" name="text2" placeholder="Author" class="input-2" required />
+            <input type="number" name="text3" placeholder="Year" class="input-3" required /><br>
+            <input type="number" name="text5" placeholder="Rating" min="0" max="10" class="input-5" required />
+            <input type="text" name="text4" placeholder="Note" class="input-4" required />
+            <button id="asking-button" type="submit">Add</button>
+          </form>
+          {{else}}
+          <div class="not-sign-in">Sign in to add your book!!!</div> 
+          
+        {{/if}}
+    </header>
+    <ul>
+      {{#each posts}}
+        {{> post}}
+      {{/each}}
+    </ul>
+  </div>
+</body>
+ 
+<template name="post">
+  <li>
+    <div class="user"><strong>{{username}}</strong> recommend:</div>
+    <div class="book-name">{{text}} </div>
+    <div class="author">{{text2}}</div>
+    <div class="year">{{text3}}</div>
+    <div class="note">{{text4}}</div>
+    <div class="rating">{{text5}}</div><span class="star"  width="5" height="5"></span>
+  </li>
+</template>
